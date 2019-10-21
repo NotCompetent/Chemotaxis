@@ -114,6 +114,14 @@
  			endShape(CLOSE);
  			stroke(0,0,0);
  			fill(0,0,0);
+ 			beginShape();
+ 			vertex(myX,myY-30);
+ 			vertex(myX-20,myY-33);
+ 			endShape(CLOSE);
+ 			beginShape();
+ 			vertex(myX,myY-28);
+ 			vertex(myX-20,myY-33);
+ 			endShape(CLOSE);
  		}
  		
  	}
