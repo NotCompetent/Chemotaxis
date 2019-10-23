@@ -1,21 +1,21 @@
- Penguin alice;
+ Fishy alice;
  Penguin[] picchy;
  void setup()   
  {     
  	//initialize bacteria variables here 
  	//int t = 0;
  	size(600,600);
-	alice = new Penguin(2,100,100); 
+	alice = new Fishy(); 
 	picchy = new Penguin[15];
 	for(int i = 0; i < picchy.length; i++){
 		//t = (int)(Math.random()*0)(int)(Math.random()*0);
-		picchy[i]= new Penguin((int)(Math.random()*3),300,300);
+		picchy[i]= new Penguin((int)(Math.random()*3),(int)(Math.random()*100)+250,(int)(Math.random()*100)+250);
 	} 
  }   
  void draw()   
  {    
  	//move and show the bacteria   
- 	background(192);
+ 	background(173,216,230);
  	alice.show();
  	alice.move();
 	for(int i = 0; i < picchy.length; i++){
@@ -24,6 +24,35 @@
 	} 
  }  
  
+ class Fishy
+{
+	int myX, myY;
+	Fishy()
+	{
+		myX = mouseX;
+		myY = mouseY;
+	}
+	void move()
+	{
+		myX = mouseX;
+		myY = mouseY;
+	}
+	void show()
+	{
+		fill(255,69,0);
+ 		stroke(255,69,0);
+		ellipse(myX,myY,10,5);
+ 		beginShape();
+ 		vertex(myX+5,myY);
+ 		vertex(myX+8,myY+3);
+ 		vertex(myX+8,myY-3);
+ 		endShape(CLOSE);
+ 		stroke(0,0,0);
+ 		fill(0,0,0);
+
+	}
+}
+
  class Penguin    
  {   
  	int myX, myY, type;
@@ -35,15 +64,19 @@
  	}
  	void move()
  	{
- 		myX = myX + (int)(Math.random()*5)-2;
- 		myY = myY + (int)(Math.random()*5)-2;
+ 		if(mouseX > myX)
+ 			myX = myX + (int)(Math.random()*5)-1;
+ 		else
+ 			myX = myX + (int)(Math.random()*5)-3;
+ 		if(mouseY > myY)
+ 			myY = myY + (int)(Math.random()*5)-1;
+ 		else
+ 			myY = myY + (int)(Math.random()*5)-3;
  		
  	}
  	void show()
  	{
- 		//type 0 = emperor
- 		//type 1 = rockhopper
- 		//type 2 = gentoo
+
  		if(type==0){
  			//EMPEROR
  			//body
@@ -60,7 +93,7 @@
  			fill(0,0,0);
  			ellipse(myX,myY-25,30,30);
  			//eyes
- 			fill(255,255,255);
+ 		    fill(255,255,255);
  			ellipse(myX+5,myY-25,10,10);
  			ellipse(myX-5,myY-25,10,10);
  			fill(0,0,0);
@@ -157,37 +190,34 @@
 		 			vertex(myX,myY-28);
 		 			vertex(myX+20,myY-30);
 		 			endShape(CLOSE);
-		 }else if(type == 2){
- 			//GENTOO
+ 		}else if(type == 2){
+ 			//ADELIE
  			//body
  			fill(0,0,0);
- 			ellipse(myX,myY,35,60);
+ 			ellipse(myX,myY,25,50);
  			//tummy
  			fill(255,255,255);
- 			ellipse(myX,myY+10,25,40);
+ 			ellipse(myX,myY+10,15,30);
  			//head
  			stroke(0,0,0);
  			fill(0,0,0);
- 			ellipse(myX,myY-20,30,25);
+ 			ellipse(myX,myY-15,20,15);
  			//eyes
  			stroke(255,255,255);
  			fill(255,255,255);
- 			ellipse(myX+7,myY-25,10,15);
- 			ellipse(myX-7,myY-25,10,15);
- 			fill(255,255,255);
- 			ellipse(myX+5,myY-20,10,10);
- 			ellipse(myX-5,myY-20,10,10);
+ 			ellipse(myX+5,myY-15,7,7);
+ 			ellipse(myX-5,myY-15,7,7);
  			fill(0,0,0);
  			stroke(0,0,0);
- 			ellipse(myX+5,myY-20,3,3);
- 			ellipse(myX-5,myY-20,3,3);
+ 			ellipse(myX+5,myY-15,3,3);
+ 			ellipse(myX-5,myY-15,3,3);
  			//beak
- 			fill(255,165,0);
+ 			fill(0,0,0);
  			stroke(255,165,0);
  			beginShape();
- 			vertex(myX,myY-7);
- 			vertex(myX+2,myY-12);
- 			vertex(myX-2,myY-12);
+ 			vertex(myX,myY-5);
+ 			vertex(myX+2,myY-10);
+ 			vertex(myX-2,myY-10);
  			endShape(CLOSE);
  			stroke(0,0,0);
  			fill(0,0,0);
